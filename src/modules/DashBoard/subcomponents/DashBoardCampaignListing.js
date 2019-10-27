@@ -101,7 +101,7 @@ export  class DashBoardCampaignListing extends Component{
     getLiveCampaigns = () => {
         var { campaignDate } = this.props;
         var liveCampaigns = JSON_DATA.data.filter((app_campaign)=>{
-         return getDateString(app_campaign.createdOn) == getDateString(campaignDate.defaultDate);
+         return getDaysDifference(new Date(app_campaign.createdOn), new Date(campaignDate.defaultDate)).indexOf(" live now")>-1;
         })
         return liveCampaigns;
     }
@@ -109,7 +109,7 @@ export  class DashBoardCampaignListing extends Component{
     getPastCampaigns = () => {
         var { campaignDate } = this.props;
         var pastCampaigns = JSON_DATA.data.filter((app_campaign)=>{
-            return (new Date(app_campaign.createdOn) < new Date(campaignDate.defaultDate) && !(getDateString(app_campaign.createdOn) == getDateString(new Date(campaignDate.defaultDate).getTime())));
+            return (new Date(app_campaign.createdOn) < new Date(campaignDate.defaultDate) && !(getDaysDifference(new Date(app_campaign.createdOn), new Date(campaignDate.defaultDate)).indexOf(" live now")>-1));
         })
         return pastCampaigns;
     }
