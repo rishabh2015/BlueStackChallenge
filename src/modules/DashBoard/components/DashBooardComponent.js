@@ -2,7 +2,6 @@ import React , { Component } from 'react';
 import DashBoardHeader from '../subcomponents/DashBoardHeader';
 import DashBoardMain from "../subcomponents/DashBoardMain";
 import PricePopupComponent from '../subcomponents/PricePopupComponent';
-import { privateEncrypt } from 'crypto';
 
 
 export default class DashBoardComponent extends Component{
@@ -24,21 +23,28 @@ export default class DashBoardComponent extends Component{
                 this.state.pricePopup.show = !this.state.pricePopup.show;
                 this.setState({});
             }
-        }
+        },
+      campaignDate:{
+          defaultDate: new Date().getTime(),
+          setDefaultDate: (date) => {
+           this.state.campaignDate.defaultDate = date;
+           this.setState({});
+          }
+      }
     }
     }
     componentDidMount(){
         document.body.classList.add("frontEndChallenge");
     }
     render(){
-        var { tab, pricePopup } = this.state;
+        var { tab, pricePopup,campaignDate } = this.state;
         return(
             <div className={"main"}>
             <div className="container-fluid">
             <div className="row">
             <div className="main_seaction">
             <DashBoardHeader tab={tab} />
-            <DashBoardMain activeTabIndex={tab.active} pricePopup={pricePopup} />
+            <DashBoardMain activeTabIndex={tab.active} pricePopup={pricePopup} campaignDate={campaignDate} />
             </div>
             </div>
             </div>

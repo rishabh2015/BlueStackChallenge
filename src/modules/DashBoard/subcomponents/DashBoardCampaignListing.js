@@ -3,25 +3,50 @@ import {JSON_DATA} from "../../Utils/Constant";
 import { getDateString, getDaysDifference } from '../../Utils/Utils';
 import view_price from "../../../assets/Images/Price.png";
 import file from "../../../assets/Images/file.png";
-import calendar from "../../../assets/Images/calendar.png";
 import statistics_report from "../../../assets/Images/statistics-report.png";
+import {translate} from "react-i18next";
 
 
-export default class DashBoardCampaignListing extends Component{
+export  class DashBoardCampaignListing extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            prevDate : this.props.campaignDate.defaultDate
+        }
+    }
+    handleDOBFocus=(event)=> {
+        var { handleDateChange} = this;
+        document.getElementsByClassName("overlay")[0].classList.add('show');
+        window.$("#"+event.target.id).on("select", handleDateChange);
+        this.setState({prevDate: this.props.campaignDate.defaultDate});  
+    }
+    
+    handleDateChange = (event) =>{
+        var dateOutput = event.target.value;
+        var { campaignDate } = this.props;
+        var { prevDate } = this.state;
+        if(new Date(dateOutput) != new Date(prevDate))
+        campaignDate.setDefaultDate(new Date(dateOutput));
+    }
 
+    componentDidMount() {
+        window.$(".dob_input").dateDropper();
+      }
+    
     getAppCampaignHTML = (campaigns) => {
         var appCampaignHTML = "";
         if(campaigns.length > 0){
-        var { pricePopup } = this.props;
+        var { pricePopup, campaignDate, t } = this.props;
+        var { handleDOBFocus } = this;
         appCampaignHTML = campaigns.map((app_campaign, key)=>{
          return(
             <tr key={key}>
             <td>
             <div  className="cm-flex-center text-16 date">  
-            <p >{getDateString(app_campaign.createdOn)}</p>
+            <p >{getDateString(campaignDate.defaultDate)}</p>
             </div>
             <div className="cm-flex-center text-13 text-muted">
-            <p >{getDaysDifference(new Date(app_campaign.createdOn), new Date())}</p>
+            <p >{getDaysDifference(new Date(app_campaign.createdOn), new Date(campaignDate.defaultDate))}</p>
             </div></td>
             <td>
             <div className="desktop-card text-12 max-width-680 p-0 bxs-none" >
@@ -42,21 +67,21 @@ export default class DashBoardCampaignListing extends Component{
             <td>
             <a  className="mr-5 text-12 decline" onClick={()=>{pricePopup.showPricePopup(app_campaign)}}>
             <img src={view_price} alt="decline" className="max-width-24"/> 
-            <span className="pdl-10 fs-13">View Summary</span>
+            <span className="pdl-10 fs-13">{t("View_Pricing")}</span>
             </a>
             </td>
             <td>
             <a  className="mr-5 text-12 decline">
             <img src={file} alt="decline" className="max-width-24" /> 
-            <span className="pdl-10 fs-13">CSV</span>
+            <span className="pdl-10 fs-13">{t("CSV")}</span>
             </a>
             <a  className="mr-5 text-12 decline">
             <img src={statistics_report} alt="decline" className="max-width-24"/> 
-            <span className="pdl-10 fs-13">Report</span>
+            <span className="pdl-10 fs-13">{t("Report")}</span>
             </a>
-            <a className="mr-5 text-12 decline">
-            <img src={calendar} alt="decline" className="max-width-24" /> 
-            <span className="pdl-10 fs-13">Schedule Again</span>
+            <a  className="mr-5 text-12 decline">
+            <input  onClick={handleDOBFocus} data-theme="my-style" type="text" id={"dob_input_"+key} className="dob_input " />
+            <span className="pdl-10 fs-13">{t("Schedule_Again")}</span>
             </a>
             </td>
             </tr>
@@ -67,27 +92,30 @@ export default class DashBoardCampaignListing extends Component{
     }
 
     getUpcomingAppCampaigns = ()=> {
+        var { campaignDate } = this.props;
         var upcomingCampaigns = JSON_DATA.data.filter((app_campaign)=>{
-        return new Date(app_campaign.createdOn)>new Date(); 
+        return new Date(app_campaign.createdOn)>new Date(campaignDate.defaultDate); 
         });
         return upcomingCampaigns;
     }
     getLiveCampaigns = () => {
+        var { campaignDate } = this.props;
         var liveCampaigns = JSON_DATA.data.filter((app_campaign)=>{
-         return getDateString(app_campaign.createdOn) == getDateString(new Date().getTime());
+         return getDateString(app_campaign.createdOn) == getDateString(campaignDate.defaultDate);
         })
         return liveCampaigns;
     }
 
     getPastCampaigns = () => {
+        var { campaignDate } = this.props;
         var pastCampaigns = JSON_DATA.data.filter((app_campaign)=>{
-            return (new Date(app_campaign.createdOn) < new Date() && !(getDateString(app_campaign.createdOn) == getDateString(new Date().getTime())));
+            return (new Date(app_campaign.createdOn) < new Date(campaignDate.defaultDate) && !(getDateString(app_campaign.createdOn) == getDateString(new Date().getTime())));
         })
         return pastCampaigns;
     }
 
     render(){
-        var { currentState } = this.props;
+        var { currentState, campaignDate } = this.props;
         var { getUpcomingAppCampaigns, getAppCampaignHTML, getPastCampaigns, getLiveCampaigns } = this;
         var returnHTML , campaigns;
         if(currentState == 0){
@@ -103,3 +131,6 @@ export default class DashBoardCampaignListing extends Component{
         return(<tbody>{returnHTML}</tbody>);
     }
 }
+
+
+export default translate("translations")(DashBoardCampaignListing);

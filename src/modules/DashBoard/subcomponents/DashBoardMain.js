@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import DashBoardCampaignListing from "./DashBoardCampaignListing";
+import { translate } from "react-i18next";
 
-export default class DashBoardMain extends Component{
+export  class DashBoardMain extends Component{
 
     render(){
-        var { activeTabIndex, pricePopup } = this.props;
+
+        var { activeTabIndex, pricePopup, campaignDate,t } = this.props;
         return(
         <div className="inner_section">
         <div className="tab-content" id="pending-tabContent" >
@@ -15,13 +17,13 @@ export default class DashBoardMain extends Component{
         <table className="table">
         <thead className="bg-default">
         <tr>
-        <th scope="col" className={"col1"} >Date</th>
-        <th scope="col" className={"col2"}>Campaign</th>
-        <th scope="col" className={"col3"}>View</th>
-        <th scope="col" className={"col4"}>Actions</th>
+        <th scope="col" className={"col1"} >{t("Date")}</th>
+        <th scope="col" className={"col2"}>{t("Campaign")}</th>
+        <th scope="col" className={"col3"}>{t("View")}</th>
+        <th scope="col" className={"col4"}>{t("Actions")}</th>
         </tr>
         </thead>
-        <DashBoardCampaignListing pricePopup={pricePopup} currentState={activeTabIndex} />
+        <DashBoardCampaignListing pricePopup={pricePopup} currentState={activeTabIndex} campaignDate={campaignDate} />
         </table>
         </div>
         </div>
@@ -30,3 +32,5 @@ export default class DashBoardMain extends Component{
         )
     }
 }
+
+export default translate("translations")(DashBoardMain);
