@@ -140,9 +140,9 @@ p, span {
 .max-width-24{
     max-width: 24px !important;
 }
-.app_name{color: #556789}
-.date{color: #556789;font-weight: 500;}
-.main a{font-weight:500;}
+.app_name{color: #556789; font-weight: 700!important;}
+.date{color: #556789;font-weight: 700;}
+.main a{font-weight:700;}
 .bg-gray{background:#f1f2f3;}
 .main_seaction{flex:auto;position:relative;}
 .main_seaction .mainHeading{position:-webkit-sticky;position:sticky;top:50px;background-color:#ffffff;z-index:99;padding-top:12px;padding-bottom:12px;padding-left:16px;padding-right:16px;}
