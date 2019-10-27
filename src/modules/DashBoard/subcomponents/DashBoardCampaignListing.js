@@ -109,7 +109,7 @@ export  class DashBoardCampaignListing extends Component{
     getPastCampaigns = () => {
         var { campaignDate } = this.props;
         var pastCampaigns = JSON_DATA.data.filter((app_campaign)=>{
-            return (new Date(app_campaign.createdOn) < new Date(campaignDate.defaultDate) && !(getDateString(app_campaign.createdOn) == getDateString(new Date().getTime())));
+            return (new Date(app_campaign.createdOn) < new Date(campaignDate.defaultDate) && !(getDateString(app_campaign.createdOn) == getDateString(new Date(campaignDate.defaultDate).getTime())));
         })
         return pastCampaigns;
     }
