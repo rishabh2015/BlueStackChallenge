@@ -46,3 +46,4 @@ TestCases of the App are as follows:
 | Campaign Date change  | Select today's date in Past Campaign tab for any campaign                  | The campaign should be removed from Past campaign tab and appear in Live Campaign tab                                          |
 | View Pricing Popup  | Click on any View Pricing tab on any campaign                  | Popup will Open Up on the page showing the pricing details                                          |
 | Page Responsiveness  | Switch from desktop to mobile page will be responsive and every thing will look fine                  | Page will be responsive in both mobile and desktop                                          |
+| Campaign Date Changes   | On date change the campaigns will be shift tabs based on the date                   |   On date change the time mentioned on the date column for each campaign(for eg: 9 days ago) will also change                                        | 
