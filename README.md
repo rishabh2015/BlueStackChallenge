@@ -35,5 +35,14 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-COde is deployed at heroku at:
+Code is deployed at heroku at:
 https://bluestacks-challenge.herokuapp.com/
+
+TestCases of the App are as follows:
+
+| Description   | Executed Steps                |Expected Output                                           |
+| ------------- | ----------------------------- | -------------------------------------------------------- |
+| Localization  | Select French language from Language selector dropdown                  | Header data,x days ago,x days ahead,Tabs text should be shown in french                                            |
+| Campaign Date change  | Select today's date in Past Campaign tab for any campaign                  | The campaign should be removed from Past campaign tab and appear in Live Campaign tab                                          |
+| View Pricing Popup  | Click on any View Pricing tab on any campaign                  | Popup will Open Up on the page showing the pricing details                                          |
+| Page Responsiveness  | Switch from desktop to mobile page will be responsive and every thing will look fine                  | Page will be responsive in both mobile and desktop                                          |
