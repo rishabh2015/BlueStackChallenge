@@ -168,6 +168,18 @@ nav.navbar img{max-height:24px;}
 .mainHeading{border-bottom:1px solid #caccce;padding-top:14px;padding-bottom:14px;margin-bottom:8px;}
 }
 @media only screen and (max-width: 992px){
+    .main_seaction .mainHeading {
+        padding: 16px;
+        margin-left: -16px;
+        margin-right: 0px !important;
+        margin-bottom: 16px;
+        background: #fff;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        box-shadow: 0px 1px 4px 0px rgba(25,28,32,0.3);
+    }
     .nav-wrapper {
         width: 164px !important;
         height: min-content !important;
