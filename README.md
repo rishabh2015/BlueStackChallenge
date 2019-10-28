@@ -41,7 +41,10 @@ https://bluestacks-challenge.herokuapp.com/
 How to Use Date Picker
 
 Date Picker will open up on clicking on calendar icon on the side of "schedule again" text.
-On clicking datepicker popup will come up on which on can navigate through dates. 
+On clicking datepicker popup will come up on which on can navigate through dates.
+
+Date Picker will open up on clicking the calendar icon as marked in the following image.
+https://github.com/rishabh2015/BlueStackChallenge/blob/master/date-dropper.JPG
 
 TestCases of the App are as follows:
 
