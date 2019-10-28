@@ -32,6 +32,11 @@ export  class DashBoardCampaignListing extends Component{
     componentDidMount() {
         window.$(".dob_input").dateDropper();
       }
+
+      componentDidUpdate() {
+        window.$(".dob_input").dateDropper();
+      }
+    
     
     getAppCampaignHTML = (campaigns) => {
         var appCampaignHTML = "";
@@ -80,7 +85,7 @@ export  class DashBoardCampaignListing extends Component{
             <span className="pdl-10 fs-13">{t("Report")}</span>
             </a>
             <a  className="mr-5 text-12 decline">
-            <input  onClick={handleDOBFocus} data-theme="my-style" type="text" id={"dob_input_"+key} className="dob_input " />
+            <input autoComplete="false"  onClick={handleDOBFocus} data-theme="my-style" type="text" id={"dob_input_"+key} className="dob_input " />
             <span className="pdl-10 fs-13">{t("Schedule_Again")}</span>
             </a>
             </td>
