@@ -38,6 +38,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 Code is deployed at heroku at:
 https://bluestacks-challenge.herokuapp.com/
 
+How to Use Date Picker
+
+Date Picker will open up on clicking on calendar icon on the side of "schedule again" text.
+On clicking datepicker popup will come up on which on can navigate through dates. 
+
 TestCases of the App are as follows:
 
 | Description   | Executed Steps                |Expected Output                                           |
@@ -47,3 +52,4 @@ TestCases of the App are as follows:
 | View Pricing Popup  | Click on any View Pricing tab on any campaign                  | Popup will Open Up on the page showing the pricing details                                          |
 | Page Responsiveness  | Switch from desktop to mobile page will be responsive and every thing will look fine                  | Page will be responsive in both mobile and desktop                                          |
 | Campaign Date Changes   | On date change the campaigns will be shift tabs based on the date                   |   On date change the time mentioned on the date column for each campaign(for eg: 9 days ago) will also change                                        | 
+| Date Dropper Usage   | On Clicking on calendar icon datepicker will open up                   |   On date picker u will see navigation arrows with which one can change the dates and clicking on the tick the date will be selected                                        | 
